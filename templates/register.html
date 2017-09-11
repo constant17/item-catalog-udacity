@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<h1>Register</h1>
+<form action="{{url_for('createUserWithPass')}}" method="post">
+	<div class="form group">
+		Name: <input name="name" type="text" placeholder="Name"/>
+		Email: <input name="email" type="text" placeholder="email"/>
+		Password: <input name="password" type="password" placeholder="password"/>
+		<button type="submit" value="Register" class="btn btn-success">Register</button>
+</form>
+
+{% endblock %}

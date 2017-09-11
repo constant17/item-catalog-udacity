@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+	<div class = 'pane'>
+		<div class = 'header'>
+		<div class="panel-heading"><h1>{{ category.name }}</h1></div>
+	</div>
+
+	
+
+
+	<div class = 'flash'>
+				  {% with messages = get_flashed_messages() %}
+		  {% if messages %}
+			  
+			<ul>
+			{% for message in messages %}
+				<li> <strong> {{ message }} </strong> </li>
+			{% endfor %}
+			</ul>
+			{% endif %}
+		{% endwith %}
+
+	</div>
+
+	{% for i in items %}
+	<div class="panel-body">
+				<div class="panel panel-info">
+					<div class="panel-heading"><span class = 'name'><p>{{i.name}}</p></span></div>
+				<div class="pad">
+					<span class = 'price'>
+						<p>{{i.price}} </p>
+					</span>
+					<div class = 'description'>
+						<p>{{i.description}}</p>
+					</div>	
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+	<div class="alert alert-warning">
+		<strong> Login to add, edit or delete an item </strong>
+	</div>
+	{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class='panel-body'><h1>List of categories</h1>
+		<div class="col-4  wrapup">
+				{% if categories %}				
+					{% for categ in categories %}
+						<span>
+							<h3>
+								<a href="/category/{{ categ.id }}">
+									{{ categ.name }}
+								</a>
+							</h3>
+						</span>
+					<br>
+					{% endfor %}						
+				{% endif %}
+		</div>
+		<div class = 'flash'>
+			{% with messages = get_flashed_messages() %}
+			  {% if messages %}
+				  
+				<div class="alert alert-info">
+				{% for message in messages %}
+					 <strong> {{ message }} </strong> 
+				{% endfor %}
+				</div>
+				{% endif %}
+			{% endwith %}
+
+		</div>
+		
+	</div>
+	<a href="{{url_for('newCategory')}}"><button type="button" class="btn btn-info">Add a category</button></a>
+{% endblock %}
+	

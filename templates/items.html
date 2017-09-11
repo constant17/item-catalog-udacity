@@ -1,0 +1,50 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class = 'pane'>
+		<div class = 'header'>
+			<h1>{{ category.name }}</h1>
+		</div>
+		<div class = 'flash'>
+			{% with messages = get_flashed_messages() %}
+			  {% if messages %}
+				  
+				<div class="alert alert-info">
+				{% for message in messages %}
+					 <strong> {{ message }} </strong> 
+				{% endfor %}
+				</div>
+				{% endif %}
+			{% endwith %}
+
+		</div>
+		<a href="{{url_for('editCategory',category_id = category.id)}}" >
+			<button type="button" class="btn btn-default">Edit Category</button>
+		</a>
+		<a href="{{url_for('deleteCategory',category_id = category.id)}}"> 
+			<button type="button" class="btn btn-default">Delete Category</button>
+		</a>
+		<a href = "{{url_for('newItem', category_id = category.id) }}">
+			<button type="button" class="btn btn-info">Create New Item</button>
+		</a>
+		<br><br>
+		{% for i in items %}
+			<div class="panel-body">
+				<div class="panel panel-info">
+					<div class="panel-heading"><span class = 'name'><p>{{i.name}}</p></span></div>
+				<div class="pad">
+					<span class = 'price'>
+						<p>{{i.price}} </p>
+					</span>
+					<div class = 'description'>
+						<p>{{i.description}}</p>
+					</div>	
+					<div class = "editdeletepane">
+							<a href="{{url_for('editItem',category_id = category.id, item_id=i.id)}}" class="btn btn-info" >Edit </a>
+							<a href="{{url_for('deleteItem',category_id = category.id, item_id=i.id)}}" class="btn btn-info" > Delete </a>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+{% endblock %}
