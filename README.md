@@ -52,7 +52,7 @@ The first dataset is a subset of real data from the Million Song Dataset. Each f
     `song_data/A/A/B/TRAABJL12903CDCF1A.json`
 And below is an example of what a single song file, `TRAABJL12903CDCF1A.json`, looks like.
 
-``{"num_songs": 1, "artist_id": "ARJIE2Y1187B994AB7", "artist_latitude": null, "artist_longitude": null, "artist_location": "", "artist_name": "Line Renaud", "song_id": "SOUPIRU12A6D4FA1E1", "title": "Der Kleine Dompfaff", "duration": 152.92036, "year": 0}``
+`{"num_songs": 1, "artist_id": "ARJIE2Y1187B994AB7", "artist_latitude": null, "artist_longitude": null, "artist_location": "", "artist_name": "Line Renaud", "song_id": "SOUPIRU12A6D4FA1E1", "title": "Der Kleine Dompfaff", "duration": 152.92036, "year": 0}`
 
 **Log Dataset**
 
@@ -66,24 +66,24 @@ The log files in the dataset are partitioned by year and month. For example, her
 ## Setup Instructions and Steps to follow
 
 The project includes the following files:
-1. test.ipynb displays the first few rows of each table to let you check your database.
-2. create_tables.py drops and creates your tables. Run this file to reset the tables.
-3. etl.ipynb reads and processes a single file from song_data and log_data and loads the data into the tables. This notebook contains detailed instructions on the ETL process for each of the tables.
-4. etl.py reads and processes files from song_data and log_data and loads them into the tables.
-5. sql_queries.py contains all sql queries, and is imported into the last three files above.
+1. `test.ipynb` displays the first few rows of each table to let you check your database.
+2. `create_tables.py` drops and creates your tables. Run this file to reset the tables.
+3. `etl.ipynb` reads and processes a single file from song_data and log_data and loads the data into the tables. This notebook contains detailed instructions on the ETL process for each of the tables.
+4. `etl.py` reads and processes files from song_data and log_data and loads them into the tables.
+5. `sql_queries.py` contains all sql queries, and is imported into the last three files above.
     
 **Requirements**
 
-1. Make sure you have Jupyter notebook, python and sql server installed on your computer.
+1. Make sure you have Jupyter Notebook, Python and SQL server installed on your computer.
 2. The following python libraries `pip`, `psycopg2`, `panda`, `glob` are required to run the program.
 
 ## Program execution
 In order to successfully run this project, below are the steps to follow:
 
-1. Open test.ipynb and execute each line in sequential order.
+1. Open `test.ipynb` and execute each line in sequential order.
 2. Run the first line to load sql extension.
-3. Run the next line which runs create_tables.py in order to create the database and tables
-4. The next line will run etl.py to process the data and populate the tables
+3. Run the next line which runs `create_tables.py` in order to create the database and tables
+4. The next line will run `etl.py` to process the data and populate the tables
 5. Connect to the database by running the next line and execute rest of the queries to analyze data from the database.
 
 ## Schema Design
@@ -128,7 +128,6 @@ Fact Table
 |Artist|Song|
 |------|------|
 |Marc Shaiman|City Slickers|
-|------|------|
 
 
 
