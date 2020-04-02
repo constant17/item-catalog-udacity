@@ -109,25 +109,18 @@ Fact Table
 
 1. Database Schema design and ETL Pipeline
 
-    The database is organized into fact and dimension tables in order to simplify queries. The fact table `songplays` contains records processed from log data associated with song plays, and the it has the following fields or columns:
-```songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent```.
-    The dimension tables are ```users, songs, artists,``` and ```time```, and organized as follow:
-`users` table: ```user_id, first_name, last_name, gender, level```
-`songs` table: ```song_id, title, artist_id, year, duration```
-`artists` table: ```artist_id, name, location, latitude, longitude```
-`time` table: ```start_time, hour, day, week, month, year, weekday```
+    The database is organized into fact and dimension tables in order to simplify queries. The fact table `songplays` contains records processed from log data associated with song plays.
+    The dimension tables are ```users, songs, artists,``` and ```time```.
     The fact table ```songplays``` is related to others table through keys such as ```song_id, artist_id, user_id, start_time```, this allows analysts to retrieve additional information from other tables using the keys when needed. For example if an analyst needs to know what song was listened by a given user at a given day using the songplay table, the key ```song_id``` can be used to retrieve the song name from the ```songs``` table, ```user_id``` to retrieve the user name and ```star_time``` the day. 
     The ETL Pipeline extracts data from the source folders and files ```data/...``` of the app, transforms the raw data according to the tables schema described above and loads it into datatype that correspond the given table schema. This avoids having to deal with unnecessary data such as ```method```, ```registration```, etc that do not help achieve the analytical goal which is to know what songs users are listening to. 
     
-3. Example queries and results for song play analysis
+2. Example queries and results for song play analysis
 
     Query to know list of songs and artists listened by women in the month of november.
        ``` %sql SELECT name AS Artist, title AS song FROM ((songplays JOIN users ON songplays.user_id = users.user_id) JOIN artists ON songplays.artist_id = artists.artist_id) JOIN songs ON songplays.song_id = songs.song_id WHERE gender='F' AND month = 11 GROUP BY(Artist, Song) ```
-    #### Result
+       
+    #### Result:
 
-|Artist|Song|
-|------|------|
-|Marc Shaiman|City Slickers|
-
-
-
+    |Artist|Song|
+    |------|------|
+    |Marc Shaiman|City Slickers|
