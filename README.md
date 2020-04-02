@@ -66,11 +66,11 @@ The log files in the dataset are partitioned by year and month. For example, her
 ## Setup Instructions and Steps to follow
 
 The project includes the following files:
-    1. test.ipynb displays the first few rows of each table to let you check your database.
-    2. create_tables.py drops and creates your tables. Run this file to reset the tables.
-    3. etl.ipynb reads and processes a single file from song_data and log_data and loads the data into the tables. This notebook contains detailed instructions on the ETL process for each of the tables.
-    4. etl.py reads and processes files from song_data and log_data and loads them into the tables.
-    5. sql_queries.py contains all sql queries, and is imported into the last three files above.
+1. test.ipynb displays the first few rows of each table to let you check your database.
+2. create_tables.py drops and creates your tables. Run this file to reset the tables.
+3. etl.ipynb reads and processes a single file from song_data and log_data and loads the data into the tables. This notebook contains detailed instructions on the ETL process for each of the tables.
+4. etl.py reads and processes files from song_data and log_data and loads them into the tables.
+5. sql_queries.py contains all sql queries, and is imported into the last three files above.
     
 **Requirements**
 
@@ -86,7 +86,7 @@ In order to successfully run this project, below are the steps to follow:
 4. The next line will run etl.py to process the data and populate the tables
 5. Connect to the database by running the next line and execute rest of the queries to analyze data from the database.
 
-### Schema Design
+## Schema Design
 
 **Fact Table**
 1. **songplays** - records in log data associated with song plays i.e. records with page `NextSong`
@@ -102,7 +102,7 @@ In order to successfully run this project, below are the steps to follow:
 4. **time** - timestamps of records in songplays broken down into specific units
     Attributes: `start_time, hour, day, week, month, year, weekday`
     
-### Purpose of this database
+## Purpose of this database
 
 The database sparkifydb enables Sparkify analysts to get relevant information on their users activities. It contains the following databases: `songplays, users, songs, artists,` and `time`. These table contain information that has been processed from the raw data collected from the app into files. Then, the processed info has been transferred to the tables in the appropriate formats in order to enable analysts to write queries and access the information they need directly.
 Fact Table
@@ -125,11 +125,10 @@ Fact Table
        ``` %sql SELECT name AS Artist, title AS song FROM ((songplays JOIN users ON songplays.user_id = users.user_id) JOIN artists ON songplays.artist_id = artists.artist_id) JOIN songs ON songplays.song_id = songs.song_id WHERE gender='F' AND month = 11 GROUP BY(Artist, Song) ```
     #### Result
 
-|    Artist    |     Song      |
---------------------------------
-| Marc Shaiman | City Slickers |
---------------------------------
-
+|Artist|Song|
+|------|------|
+|Marc Shaiman|City Slickers|
+|------|------|
 
 
 
